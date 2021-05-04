@@ -20,6 +20,7 @@ function Cards() {
     const handleClick = (e) => {
         e.preventDefault()
         setIsFlipped(!isFlipped);
+        console.log("hello");
 
     }
     return (
