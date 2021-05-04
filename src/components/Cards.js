@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Cards.css';
+// import './BackModal.js';
 
 function Cards() {
     const [characters, setCharacters] = useState([]);
@@ -25,25 +26,25 @@ function Cards() {
             {characters.length !== 0 ? (
         characters.map((character) => {
             return(
-                            <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
+                <div className="flip-card">
+                            <div className = "flip-card-inner">
+                                <div className = "flip-card-front">
                                 <img src={character.image} alt="" />
                                 </div>
-                            <div class="flip-card-back">
+                            <div className="flip-card-back">
                             <h1>{character.name}</h1>
-                            <p>Species: {character.species}</p>
-                            <p>Status : {character.status}</p>
+                            {/* <p>Species: {character.species}</p>
+                            <p>Status : {character.status}</p> */}
+                            <button> Show More</button>
                             </div>
                         </div>
-                        </div>
+                    </div>
     )
         })
       ) : (
         <p>loading..</p>
             )}
         </div>
-    
     );
 };
 
