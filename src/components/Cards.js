@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Cards.css';
 import './BackModal.js';
-import Button from 'react-bootstrap/Button'
+// import Button from 'react-bootstrap/Button'
 
 function Cards() {
     const [characters, setCharacters] = useState([]);

@@ -13,8 +13,8 @@ function Searchbar() {
     };
     return (
         <div>
-            <Navbar style={mySearchBar} bg="light" variant="light">
-            <input style={inputbar} type="text" placeholder="Search" className="InputArea"/>
+            <Navbar fixed="top" style={mySearchBar} bg="light" variant="light">
+            <input style={inputbar} type="text" placeholder="Search character" className="InputArea"/>
             </Navbar> 
         </div>
     )
