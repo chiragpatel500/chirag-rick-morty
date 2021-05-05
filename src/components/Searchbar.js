@@ -4,7 +4,8 @@ import Navbar from 'react-bootstrap/Navbar';
 function Searchbar() {
     const mySearchBar = {
         backgroundColor: "violet",
-        padding:20,
+        padding: 20,
+        
     };
     const inputbar = {
         padding: 10,
@@ -13,7 +14,7 @@ function Searchbar() {
     };
     return (
         <div>
-            <Navbar fixed="top" style={mySearchBar} bg="light" variant="light">
+            <Navbar  style={mySearchBar} bg="light" variant="light">
             <input style={inputbar} type="text" placeholder="Search character" className="InputArea"/>
             </Navbar> 
         </div>
