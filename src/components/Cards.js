@@ -17,7 +17,7 @@ function Cards() {
   const handleSearchInputChange = (event) => {
     setSearchText(event.target.value);
   };
-  const filteredChar = characters.filter((character) => {
+  const filteredCharacter = characters.filter((character) => {
     return character.name.toUpperCase().includes(searchText.toUpperCase());
   });
     
@@ -25,7 +25,7 @@ function Cards() {
         fetchApi();
     });
         
-    // styling For Navbar
+    // // styling For Navbar
      const mySearchBar = {
         backgroundColor: "violet",
         padding: 20,
@@ -40,7 +40,7 @@ function Cards() {
         <div>
             <div>
                 <Navbar style={mySearchBar} bg="light" variant="light">
-<input style={inputbar}  placeholder="Search character"id="searchInput"
+<input style={inputbar}  placeholder="Search character" id="searchInput"
           type="text"
           onChange={handleSearchInputChange}/>
             </Navbar> 
@@ -48,7 +48,7 @@ function Cards() {
 
         <div className="flip-container">
             {characters.length !== 0 ? (
-        filteredChar.map((character) => {
+        filteredCharacter.map((character) => {
             return (
            <p>
                 <div className="flip-card">
