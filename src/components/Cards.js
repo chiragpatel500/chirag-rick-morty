@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import './Cards.css';
 import './BackModal.js';
-// import './Searchbar.js';
 import Navbar from 'react-bootstrap/Navbar';
 // import Button from 'react-bootstrap/Button'
 
 function Cards() {
     const [characters, setCharacters] = useState([]);
-    // const [isFlipped, setIsFlipped] = useState(false);
-    // const [modalShow, setModalShow] = React.useState(false);
+    const [searchText, setSearchText] = useState("");
 
     const fetchApi = () => {
         fetch("https://rickandmortyapi.com/api/character/")
             .then((response) => response.json())
             .then((data) => setCharacters(data.results));
     };
+     
+  const handleSearchInputChange = (event) => {
+    setSearchText(event.target.value);
+  };
+  const filteredChar = characters.filter((character) => {
+    return character.name.toUpperCase().includes(searchText.toUpperCase());
+  });
+    
     useEffect(() => {
         fetchApi();
     });
-    
-    // const handleClick = (e) => {
-    //     e.preventDefault()
-    //     setIsFlipped(!isFlipped);
-    //     console.log("hello")
-
-    // }
+        
     // styling For Navbar
      const mySearchBar = {
         backgroundColor: "violet",
@@ -35,21 +35,20 @@ function Cards() {
         padding: 10,
         innerWidth: 20,
         backgroundColor: "white",  
-    };
-
- 
-    
+    };   
     return (
         <div>
             <div>
                 <Navbar style={mySearchBar} bg="light" variant="light">
-<input style={inputbar}  placeholder="Search character" className="InputArea"/>
+<input style={inputbar}  placeholder="Search character"id="searchInput"
+          type="text"
+          onChange={handleSearchInputChange}/>
             </Navbar> 
             </div>
 
         <div className="flip-container">
             {characters.length !== 0 ? (
-        characters.map((character) => {
+        filteredChar.map((character) => {
             return (
            <p>
                 <div className="flip-card">
@@ -62,7 +61,8 @@ function Cards() {
                                 <button> Show More</button>
                             </div>
                         </div>
-                    </div></p>
+                    </div>
+                <cards currentCharacter={character} /></p>
     )
         })
       ) : (
