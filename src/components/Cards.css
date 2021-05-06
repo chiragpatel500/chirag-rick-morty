@@ -1,6 +1,10 @@
-.bg-light {
+.navbar {
     background-color: violet;
+    display: flex;
+    flex-flow: row;
+    justify-content:center;
 }
+
 .flip-container {
     text-align: center;
     display: flex;

@@ -41,7 +41,7 @@ function Cards() {
     return (
         <div>
             <div>
-                <Navbar className ="navbar navbar-expand-lg navbar-light bg-light justify-lg-content-center">
+                <Navbar className ="navbar navbar navbar-expand">
                     <input placeholder = "Search character" id="searchInput" type="text" onChange={handleSearchInputChange}/>
             </Navbar> 
             </div>
