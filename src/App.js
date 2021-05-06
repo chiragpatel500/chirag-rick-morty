@@ -1,12 +1,12 @@
 import './App.css';
 import Cards from './components/Cards';
-// import Searchbar from './components/Searchbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
   return (
     <div className="App">
-      {/* <Searchbar /> */}
       <Cards />
     </div>
   );

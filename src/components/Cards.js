@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './Cards.css';
-import './BackModal.js';
-import Navbar from 'react-bootstrap/Navbar';
-// import Button from 'react-bootstrap/Button'
+import Navbar from 'react-bootstrap/Navbar';import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import ModalHeader from 'react-bootstrap/ModalHeader';
+import ModalTitle from 'react-bootstrap/ModalTitle';
+import ModalBody from 'react-bootstrap/ModalBody';
+import { findByLabelText } from '@testing-library/dom';
+
 
 function Cards() {
     const [characters, setCharacters] = useState([]);
     const [searchText, setSearchText] = useState("");
+    
+    // Modal state
+    const [show, setShow] = useState(false);
+    const handleClose = () => setactiveIndex(null);
+    const [activeIndex, setactiveIndex] = useState(null);
+    const handleShow = (index) => setactiveIndex(index);
+
+    
 
     const fetchApi = () => {
         fetch("https://rickandmortyapi.com/api/character/")
@@ -27,8 +39,8 @@ function Cards() {
     // // styling For Navbar
      const mySearchBar = {
         backgroundColor: "violet",
-        padding: 20,
-        
+         padding: 20,
+
     };
     const inputbar = {
         padding: 10,
@@ -38,7 +50,7 @@ function Cards() {
     return (
         <div>
             <div>
-                <Navbar style={mySearchBar} bg="light" variant="light">
+                <Navbar style={mySearchBar}>
 <input style={inputbar}  placeholder="Search character" id="searchInput"
           type="text"
           onChange={handleSearchInputChange}/>
@@ -47,21 +59,37 @@ function Cards() {
 
         <div className="flip-container">
             {characters.length !== 0 ? (
-        filteredCharacter.map((character) => {
+        filteredCharacter.map((character,index) => {
             return (
-           <p>
-                <div className="flip-card">
-                            <div className = "flip-card-inner">
-                                <div className = "flip-card-front">
-                                <img src={character.image} alt="" />
-                                </div>
-                            <div className="flip-card-back">
-                            <h1>{character.name}</h1>       
-                                <button> Show More</button>
-                            </div>
-                        </div>
-                    </div>
-                <cards currentCharacter={character} /></p>
+                <div className="all">
+                    {/* <cards currentCharacter={character} /> */}
+        
+                                            <div className="flip-card">
+                                            <div className = "flip-card-inner">
+                                                <div className = "flip-card-front">
+                                                <img src={character.image} alt="" />
+                                                </div>
+                                            <div className="flip-card-back">
+                                            <h1>{character.name}</h1>      
+                                            <Button variant="primary" onClick={()=>handleShow(index)}>Show More</Button>  
+                                            </div>
+                                             </div>
+                                            </div>
+                       
+                    <Modal show={activeIndex === index} onHide={handleClose}>
+                    <ModalHeader closeButton>
+                        <ModalTitle>{character.name}</ModalTitle>
+                    </ModalHeader>
+                    <ModalBody>
+                        <img src={character.image} alt=""/>
+                        <h5>species:{character.species}</h5> 
+                        <h5>status:{character.status}</h5>
+                    </ModalBody>
+                        </Modal>
+                    
+            </div>
+        
+                  
     )
         })
       ) : (
@@ -74,27 +102,6 @@ function Cards() {
 
 export default Cards;
 
-// Demo Modal
-// <!-- Button trigger modal -->
-// <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-//   Launch demo modal
-// </button>
 
-// <!-- Modal -->
-// <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//   <div class="modal-dialog">
-//     <div class="modal-content">
-//       <div class="modal-header">
-//         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-//         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-//       </div>
-//       <div class="modal-body">
-//         ...
-//       </div>
-//       <div class="modal-footer">
-//         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-//         <button type="button" class="btn btn-primary">Save changes</button>
-//       </div>
-//     </div>
-//   </div>
-// </div>
+
+
