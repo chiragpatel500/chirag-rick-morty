@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Cards.css';
-import Navbar from 'react-bootstrap/Navbar';import Button from 'react-bootstrap/Button';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ModalHeader from 'react-bootstrap/ModalHeader';
 import ModalTitle from 'react-bootstrap/ModalTitle';
@@ -36,24 +37,12 @@ function Cards() {
         fetchApi();
     });
         
-    // // styling For Navbar
-     const mySearchBar = {
-        backgroundColor: "violet",
-         padding: 20,
 
-    };
-    const inputbar = {
-        padding: 10,
-        innerWidth: 20,
-        backgroundColor: "white",  
-    };   
     return (
         <div>
             <div>
-                <Navbar style={mySearchBar}>
-<input style={inputbar}  placeholder="Search character" id="searchInput"
-          type="text"
-          onChange={handleSearchInputChange}/>
+                <Navbar className ="navbar navbar-expand-lg navbar-light bg-light justify-lg-content-center">
+                    <input placeholder = "Search character" id="searchInput" type="text" onChange={handleSearchInputChange}/>
             </Navbar> 
             </div>
 
@@ -61,7 +50,7 @@ function Cards() {
             {characters.length !== 0 ? (
         filteredCharacter.map((character,index) => {
             return (
-                <div className="all">
+                <p>
                     {/* <cards currentCharacter={character} /> */}
         
                                             <div className="flip-card">
@@ -87,7 +76,7 @@ function Cards() {
                     </ModalBody>
                         </Modal>
                     
-            </div>
+            </p>
         
                   
     )
