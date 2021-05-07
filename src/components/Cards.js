@@ -43,8 +43,9 @@ function Cards() {
     return (
         <div>
             <div>
-                <Navbar className ="navbar navbar navbar-expand">
-                    <input placeholder = "Search character" id="searchInput" type="text" onChange={handleSearchInputChange}/>
+                <Navbar className="navbar navbar navbar-expand">
+                             <h3>CHIRAG-RICK-MORTY API SPA APP</h3>
+                    <input placeholder = "Search Characters" id="searchInput" type="text" onChange={handleSearchInputChange}/>
             </Navbar> 
             </div>
 
@@ -86,9 +87,9 @@ function Cards() {
             )}
             </div>
                   <Pagination className="pageination">
-            <Pagination.Prev/>
-                <Pagination.Item>{2}</Pagination.Item>
-                <Pagination.Next />
+            <Pagination.Prev onClick=""/>
+                <Pagination.Item onClick="">{2}</Pagination.Item>
+                <Pagination.Next onClick="" />
             </Pagination>
     </div>
     );
