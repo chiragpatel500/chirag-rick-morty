@@ -6,7 +6,9 @@ import Modal from 'react-bootstrap/Modal';
 import ModalHeader from 'react-bootstrap/ModalHeader';
 import ModalTitle from 'react-bootstrap/ModalTitle';
 import ModalBody from 'react-bootstrap/ModalBody';
-import { findByLabelText } from '@testing-library/dom';
+// import { findByLabelText } from '@testing-library/dom';
+import Pagination from 'react-bootstrap/Pagination';
+import PageItem from 'react-bootstrap/PageItem';
 
 
 function Cards() {
@@ -63,8 +65,7 @@ function Cards() {
                                             <Button variant="primary" onClick={()=>handleShow(index)}>Show More</Button>  
                                             </div>
                                              </div>
-                                            </div>
-                       
+                          </div> 
                     <Modal show={activeIndex === index} onHide={handleClose}>
                     <ModalHeader closeButton>
                         <ModalTitle>{character.name}</ModalTitle>
@@ -74,18 +75,22 @@ function Cards() {
                         <h5>species:{character.species}</h5> 
                         <h5>status:{character.status}</h5>
                     </ModalBody>
-                        </Modal>
-                    
+                    </Modal>        
             </p>
-        
+               
                   
     )
         })
       ) : (
         <p>loading..</p>
             )}
-        </div>
-        </div>
+            </div>
+                  <Pagination className="pageination">
+            <Pagination.Prev/>
+                <Pagination.Item>{2}</Pagination.Item>
+                <Pagination.Next />
+            </Pagination>
+    </div>
     );
 };
 
